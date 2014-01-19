@@ -30,7 +30,7 @@ class Pimple
     }
     
     /**
-     * Constructor Injection for Controllers
+     * Automatic Constructor Injection for Controllers
      * 
      * @param string $class
      * @return void

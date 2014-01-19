@@ -1,4 +1,11 @@
 <?php
+/**
+ * Dependancy for Pimple
+ * 
+ * You might have to change injectControllerConstructor() method in 
+ * "src/Container/Pimple.php", if you want to change automatic Constructor 
+ * Injection for Controllers.
+ */
 
 return function () {
     $c = new \Pimple();
