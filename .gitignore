@@ -1,0 +1,4 @@
+nbproject/
+vendor/
+cache/
+tests/coverage/
