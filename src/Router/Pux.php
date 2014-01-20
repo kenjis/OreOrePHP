@@ -12,9 +12,10 @@
 
 namespace kenjis\OreOrePHP\Router;
 
+use kenjis\OreOrePHP\RouterInterface;
 use kenjis\OreOrePHP\Request;
 
-class Pux
+class Pux implements RouterInterface
 {
     protected $request;
     

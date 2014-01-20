@@ -12,7 +12,9 @@
 
 namespace kenjis\OreOrePHP\Container;
 
-class Dice
+use kenjis\OreOrePHP\ContainerInterface;
+
+class Dice implements ContainerInterface
 {
     protected $container;
     

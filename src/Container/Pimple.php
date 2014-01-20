@@ -12,7 +12,9 @@
 
 namespace kenjis\OreOrePHP\Container;
 
-class Pimple
+use kenjis\OreOrePHP\ContainerInterface;
+
+class Pimple implements ContainerInterface
 {
     protected $container;
     
