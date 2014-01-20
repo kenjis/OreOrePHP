@@ -37,7 +37,7 @@ $router    = new \kenjis\OreOrePHP\Router\Pux($request);
 
 $response  = new \kenjis\OreOrePHP\Response();
 
-$app = new kenjis\OreOrePHP\Framework(
+$app = new \kenjis\OreOrePHP\Framework(
     $container, $config, $router, $request, $response
 );
 $app->run();
