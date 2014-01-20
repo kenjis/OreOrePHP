@@ -14,7 +14,7 @@ namespace kenjis\OreOrePHP\Container;
 
 class Dice
 {
-    private $container;
+    protected $container;
     
     public function __construct(\Jasrags\Dice $container)
     {

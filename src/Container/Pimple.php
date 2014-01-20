@@ -14,7 +14,7 @@ namespace kenjis\OreOrePHP\Container;
 
 class Pimple
 {
-    private $container;
+    protected $container;
     
     public function __construct(\Pimple $container)
     {
@@ -35,7 +35,7 @@ class Pimple
      * @param string $class
      * @return void
      */
-    private function injectControllerConstructor($class)
+    protected function injectControllerConstructor($class)
     {
         $c = $this->container;
         // Inject Twig
