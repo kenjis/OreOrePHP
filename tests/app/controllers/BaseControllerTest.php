@@ -32,6 +32,7 @@ class BaseControllerTest extends \PHPUnit_Framework_TestCase {
 
     public function testfindActionMethod()
     {
+        // @TODO getFoo and postFoo tests
         $request = m::mock('kenjis\OreOrePHP\Request')
             ->shouldReceive('getServer')
             ->with('REQUEST_METHOD')

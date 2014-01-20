@@ -4,31 +4,42 @@ namespace Controller;
 
 class BaseController
 {
+    /**
+     * @var \kenjis\OreOrePHP\Config
+     */
     protected $config;
     
     /**
      * @var \kenjis\OreOrePHP\Request
      */
     protected $request;
+    
+    /**
+     *
+     * @var \kenjis\OreOrePHP\Response
+     */
     protected $respose;
+    
+    /**
+     * Template Engine
+     */
     protected $templating;
     
-    public function __construct(
-        \Twig_Environment $template = null
-    )
+    public function __construct()
     {
-        $this->templating = $template;
     }
 
     public function injectCoreDependancy(
         \Config $config,
         \Request $request,
-        \Response $response
+        \Response $response,
+        $templating
     )
     {
-        $this->config   = $config;
-        $this->request  = $request;
-        $this->response = $response;
+        $this->config     = $config;
+        $this->request    = $request;
+        $this->response   = $response;
+        $this->templating = $templating;
     }
 
     protected function show404($action)

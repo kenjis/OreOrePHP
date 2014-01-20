@@ -24,14 +24,17 @@ class Framework
      * @var Response
      */
     protected $response;
+    
+    protected $templating;
 
-    public function __construct($container, $config, $router, $request, $response)
+    public function __construct($container, $config, $router, $request, $response, $templating)
     {
-        $this->container = $container;
-        $this->config    = $config;
-        $this->router    = $router;
-        $this->request   = $request;
-        $this->response  = $response;
+        $this->container  = $container;
+        $this->config     = $config;
+        $this->router     = $router;
+        $this->request    = $request;
+        $this->response   = $response;
+        $this->templating = $templating;
     }
 
     /**
@@ -50,7 +53,9 @@ class Framework
             }
             
             $c = $this->container->resolve($controllerName);
-            $c->injectCoreDependancy($this->config, $this->request, $this->response);
+            $c->injectCoreDependancy(
+                $this->config, $this->request, $this->response, $this->templating
+            );
             
             $body = $c->run($action, $params);
             $this->response->setBody($body);

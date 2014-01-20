@@ -44,7 +44,7 @@ class FrameworkTest extends \PHPUnit_Framework_TestCase
         $hello = test::double(
             'Controller\Hello',
             ['run' => 'I am world.', 'injectCoreDependancy' => null]
-        )->construct($twig);
+        )->make();
         $container = test::double(
             'kenjis\OreOrePHP\Container\Dice',
             ['resolve' => function () use ($hello) {
@@ -62,7 +62,7 @@ class FrameworkTest extends \PHPUnit_Framework_TestCase
             ['setBody' => null, 'send' => 'I am world.']
         )->make();
         
-        $object = new Framework($container, $config, $router, $request, $response);
+        $object = new Framework($container, $config, $router, $request, $response, $twig);
         $test = $object->run();
         $expected = '';
         $this->assertEquals($expected, $test);
@@ -92,7 +92,7 @@ class FrameworkTest extends \PHPUnit_Framework_TestCase
             ->shouldReceive('resolve')->with('Controller\Hello')->andReturn($hello)
             ->getMock();
         
-        $object = new Framework($container, $config, $router, $request, $response);
+        $object = new Framework($container, $config, $router, $request, $response, $twig);
         $test = $object->run();
         $expected = '';
         $this->assertEquals($expected, $test);
@@ -116,7 +116,7 @@ class FrameworkTest extends \PHPUnit_Framework_TestCase
         $container = m::mock('kenjis\OreOrePHP\Container\Dice');
         
         $this->expectOutputString('Controller\Notfound is not found.');
-        $object = new Framework($container, $config, $router, $request, $response);
+        $object = new Framework($container, $config, $router, $request, $response, $twig);
         $test = $object->run();
     }
 

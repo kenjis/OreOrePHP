@@ -38,9 +38,8 @@ class Pimple
     protected function injectControllerConstructor($class)
     {
         $c = $this->container;
-        // Inject Twig
         $c[$class] = function ($c) use ($class) {
-            return new $class($c['Twig_Environment']);
+            return new $class();
         };
     }
 }

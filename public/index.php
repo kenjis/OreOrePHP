@@ -37,7 +37,10 @@ $router    = new \kenjis\OreOrePHP\Router\Pux($request);
 
 $response  = new \kenjis\OreOrePHP\Response();
 
+// Template Engine
+$templating = $container->resolve('templating');
+
 $app = new \kenjis\OreOrePHP\Framework(
-    $container, $config, $router, $request, $response
+    $container, $config, $router, $request, $response, $templating
 );
 $app->run();
