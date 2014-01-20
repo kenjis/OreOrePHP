@@ -30,7 +30,7 @@ class BaseController
     protected function show404($action)
     {
         $this->response->setStatusCode(404);
-        throw new \HttpNotFoundException(__CLASS__ . '::' . $action . ' is not found.');
+        throw new \HttpNotFoundException(get_class($this) . '::' . $action . ' is not found.');
     }
 
     /**
