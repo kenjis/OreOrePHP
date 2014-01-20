@@ -43,7 +43,7 @@ class Phalcon
             $action = 'actionIndex';
         }
         
-        $phalconParams     = $router->getParams();
+        $phalconParams = $router->getParams();
         for ($i = 0; $i < 3; $i++) {
             $params[$i] = isset($phalconParams[$i]) ? $phalconParams[$i] : null;
         }
