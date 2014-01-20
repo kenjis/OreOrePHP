@@ -5,6 +5,10 @@ namespace Controller;
 class BaseController
 {
     protected $config;
+    
+    /**
+     * @var \kenjis\OreOrePHP\Request
+     */
     protected $request;
     protected $respose;
     protected $templating;
@@ -40,15 +44,26 @@ class BaseController
      * @param array $params
      * @return string
      */
-    public function run($action, $params = array())
+    public function run($action, $params = [null, null, null])
     {
-        $action = 'action' . ucfirst($action);
+        $actionMethod = $this->findActionMethod($action);
 
-        if (! method_exists($this, $action)) {
-            $this->show404($action);
+        if (! method_exists($this, $actionMethod)) {
+            $this->show404($actionMethod);
         }
 
-        return $this->$action($params[0], $params[1], $params[2]);
+        return $this->$actionMethod($params[0], $params[1], $params[2]);
+    }
+
+    protected function findActionMethod($action)
+    {
+        $reqestMethod = strtolower($this->request->getServer('REQUEST_METHOD'));
+        $actionMethod = $reqestMethod . ucfirst($action);
+        if (! method_exists($this, $actionMethod)) {
+            $actionMethod = 'action' . ucfirst($action);
+        }
+        
+        return $actionMethod;
     }
 
     public function actionIndex()
