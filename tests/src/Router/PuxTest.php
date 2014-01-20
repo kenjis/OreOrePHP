@@ -32,18 +32,38 @@ class PuxTest extends \PHPUnit_Framework_TestCase
         m::close();
     }
 
+    public function routeProvider()
+    {
+        return [
+            // No matched route, error
+            ['/hello/say/ore/abc/def/xxx', ['__No_Route_Found__', '__No_Route_Found__', [null, null, null]]],
+            
+            // Normal routes
+            ['/hello/say/ore/abc/def/', ['Hello', 'actionSay', ['ore', 'abc', 'def']]],
+            ['/hello/say/ore/abc/def',  ['Hello', 'actionSay', ['ore', 'abc', 'def']]],
+            ['/hello/say/ore/abc',      ['Hello', 'actionSay', ['ore', 'abc', null]]],
+            ['/hello/say/ore/', ['Hello', 'actionSay',   ['ore', null, null]]],
+            ['/hello/say/ore',  ['Hello', 'actionSay',   ['ore', null, null]]],
+            ['/hello/say/',     ['Hello', 'actionSay',   [null,  null, null]]],
+            ['/hello/say',      ['Hello', 'actionSay',   [null,  null, null]]],
+            ['/hello/',         ['Hello', 'actionIndex', [null,  null, null]]],
+            ['/hello',          ['Hello', 'actionIndex', [null,  null, null]]],
+            ['/',               ['Hello', 'actionIndex', [null,  null, null]]],
+        ];
+    }
+    
     /**
      * @covers kenjis\OreOrePHP\Router\Pux::getRoute
+     * @dataProvider routeProvider
      */
-    public function testGetRoute_Controller_Method_Param()
+    public function testGetRoute_Controller_Method_Param($pathInfo, $expected)
     {
         $request = m::mock('kenjis\OreOrePHP\Request');
         $request->shouldReceive('getServer')->with('USE_MUX')->andReturn(null);
-        $request->shouldReceive('getServer')->with('PATH_INFO')->andReturn('/hello/say/ore');
+        $request->shouldReceive('getServer')->with('PATH_INFO')->andReturn($pathInfo);
         $object = new Pux($request);
         
         $test = $object->getRoute();
-        $expected = ['Hello', 'actionSay', ['ore', null, null]];
         $this->assertEquals($expected, $test);
     }
     

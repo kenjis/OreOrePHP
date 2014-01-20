@@ -51,6 +51,8 @@ class Pux
         // Resolve controller name
         if ($route[2][0] === ':dummy') {
             $controller = ucfirst($route[3]['vars']['controller']);
+        } elseif ($route === null) {
+            $controller = '__No_Route_Found__';
         } else {
             $controller = ucfirst($route[2][0]);
         }
@@ -62,6 +64,8 @@ class Pux
             } else {
                 $action = 'actionIndex';
             }
+        } elseif ($route === null) {
+            $action = '__No_Route_Found__';
         } else {
             $action = 'action' . ucfirst($route[2][1]);
         }
