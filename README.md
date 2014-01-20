@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/kenjis/OreOrePHP.png)](https://travis-ci.org/kenjis/OreOrePHP)
 
-A simple and fast PHP framework.
+A simple and fast PHP 5.4+ "glue" framework with minimal learning cost.
 
 ## Using Components
 
@@ -17,7 +17,7 @@ OreOrePHP is using these great components.
 
 Testing
 
-* Mock
+* Mocking
    * [AspectMock](https://github.com/Codeception/AspectMock)
    * [Mockery](https://github.com/padraic/mockery)
 
