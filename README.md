@@ -6,20 +6,20 @@ A simple and fast PHP framework.
 
 ## Using Components
 
+OreOrePHP is using these great components.
+
 * Router
-   * Pux https://github.com/c9s/Pux
-   * Phalcon https://github.com/phalcon/cphalcon
+   * [Pux](https://github.com/c9s/Pux) or [Phalcon](https://github.com/phalcon/cphalcon)
 * Templating
-   * Twig https://github.com/fabpot/Twig
+   * [Twig](https://github.com/fabpot/Twig)
 * Container
-   * Dice https://github.com/Jasrags/Dice
-   * Pimple https://github.com/fabpot/Pimple
+   * [Dice](https://github.com/Jasrags/Dice) or [Pimple](https://github.com/fabpot/Pimple)
 
 Testing
 
 * Mock
-   * AspectMock https://github.com/Codeception/AspectMock
-   * Mockery https://github.com/padraic/mockery
+   * [AspectMock](https://github.com/Codeception/AspectMock)
+   * [Mockery](https://github.com/padraic/mockery)
 
 ## Installation
 
