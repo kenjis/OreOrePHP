@@ -8,6 +8,7 @@ A simple and fast PHP framework.
 
 * Router
    * Pux https://github.com/c9s/Pux
+   * Phalcon https://github.com/phalcon/cphalcon
 * Templating
    * Twig https://github.com/fabpot/Twig
 * Container

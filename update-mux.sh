@@ -1,3 +1,3 @@
 #!/bin/sh
 
- ./pux compile -o config/mux.php config/routes.php
+ ./pux compile -o config/routes.pux.mux.php config/routes.pux.php

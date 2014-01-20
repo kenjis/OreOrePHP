@@ -35,10 +35,10 @@ class Pux
         
         if ($useMux) {
             //echo 'use mux';
-            $mux = require ROOTPATH . '/config/mux.php';
+            $mux = require ROOTPATH . '/config/routes.pux.mux.php';
         } else {
             //echo 'not use mux';
-            $mux = require ROOTPATH . '/config/routes.php';
+            $mux = require ROOTPATH . '/config/routes.pux.php';
         }
 
         $pathinfo = $this->request->getServer('PATH_INFO') ?: '/';

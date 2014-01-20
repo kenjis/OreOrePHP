@@ -28,7 +28,13 @@ $container = new \kenjis\OreOrePHP\Container\Dice($getContainer());
 $config    = new \kenjis\OreOrePHP\Config();
 $request   = new \kenjis\OreOrePHP\Request();
 $request->fromGlobals();
+
+// Use Pux as Router
 $router    = new \kenjis\OreOrePHP\Router\Pux($request);
+
+// Use Phalcon as Router
+//$router    = new \kenjis\OreOrePHP\Router\Phalcon($request);
+
 $response  = new \kenjis\OreOrePHP\Response();
 
 $app = new kenjis\OreOrePHP\Framework(

@@ -57,7 +57,7 @@ class Framework
             
             $this->response->send();
         } catch (\Exception $e) {
-            echo $e->getMessage();
+            echo $e->getMessage();  // @TODO HTML-escaping
         }
     }
 }
