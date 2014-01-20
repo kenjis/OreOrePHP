@@ -5,6 +5,8 @@ namespace kenjis\OreOrePHP\Router;
 use Mockery as m;
 
 /**
+ * @group OreOrePHP
+ * @group Router
  * @group Phalcon
  */
 class PhalconTest extends \PHPUnit_Framework_TestCase {
@@ -33,19 +35,19 @@ class PhalconTest extends \PHPUnit_Framework_TestCase {
     {
         return [
             // 4th param or later is ignored
-            ['/hello/say/ore/abc/def/xxx', ['Hello', 'actionSay', ['ore', 'abc', 'def']]],
+            ['/hello/say/ore/abc/def/xxx', ['Hello', 'say', ['ore', 'abc', 'def']]],
             
             // Normal routes
-            ['/hello/say/ore/abc/def/', ['Hello', 'actionSay', ['ore', 'abc', 'def']]],
-            ['/hello/say/ore/abc/def',  ['Hello', 'actionSay', ['ore', 'abc', 'def']]],
-            ['/hello/say/ore/abc',      ['Hello', 'actionSay', ['ore', 'abc', null]]],
-            ['/hello/say/ore/', ['Hello', 'actionSay',   ['ore', null, null]]],
-            ['/hello/say/ore',  ['Hello', 'actionSay',   ['ore', null, null]]],
-            ['/hello/say/',     ['Hello', 'actionSay',   [null,  null, null]]],
-            ['/hello/say',      ['Hello', 'actionSay',   [null,  null, null]]],
-            ['/hello/',         ['Hello', 'actionIndex', [null,  null, null]]],
-            ['/hello',          ['Hello', 'actionIndex', [null,  null, null]]],
-            ['/',               ['Hello', 'actionIndex', [null,  null, null]]],
+            ['/hello/say/ore/abc/def/', ['Hello', 'say', ['ore', 'abc', 'def']]],
+            ['/hello/say/ore/abc/def',  ['Hello', 'say', ['ore', 'abc', 'def']]],
+            ['/hello/say/ore/abc',      ['Hello', 'say', ['ore', 'abc', null]]],
+            ['/hello/say/ore/', ['Hello', 'say',   ['ore', null, null]]],
+            ['/hello/say/ore',  ['Hello', 'say',   ['ore', null, null]]],
+            ['/hello/say/',     ['Hello', 'say',   [null,  null, null]]],
+            ['/hello/say',      ['Hello', 'say',   [null,  null, null]]],
+            ['/hello/',         ['Hello', 'index', [null,  null, null]]],
+            ['/hello',          ['Hello', 'index', [null,  null, null]]],
+            ['/',               ['Hello', 'index', [null,  null, null]]],
         ];
     }
     

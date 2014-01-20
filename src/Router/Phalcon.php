@@ -38,9 +38,9 @@ class Phalcon
         
         $action = $router->getActionName();
         if ($action !== null) {
-            $action = 'action' . ucfirst($action);
+            $action = $action;
         } else {
-            $action = 'actionIndex';
+            $action = 'index';
         }
         
         $phalconParams = $router->getParams();

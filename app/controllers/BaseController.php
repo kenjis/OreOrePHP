@@ -42,6 +42,8 @@ class BaseController
      */
     public function run($action, $params = array())
     {
+        $action = 'action' . ucfirst($action);
+
         if (! method_exists($this, $action)) {
             $this->show404($action);
         }

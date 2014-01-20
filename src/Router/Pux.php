@@ -60,14 +60,14 @@ class Pux
         // Resolve action method name
         if ($route[2][1] === ':dummy') {
             if (isset($route[3]['vars']['action'])) {
-                $action = 'action' . ucfirst($route[3]['vars']['action']);
+                $action = $route[3]['vars']['action'];
             } else {
-                $action = 'actionIndex';
+                $action = 'index';
             }
         } elseif ($route === null) {
             $action = '__No_Route_Found__';
         } else {
-            $action = 'action' . ucfirst($route[2][1]);
+            $action = $route[2][1];
         }
 
         // Resolve URI segment params, you can use 3 URI segments
