@@ -1,6 +1,8 @@
 <?php
 /**
  * Routing for Phalcon
+ * 
+ * Documentaion: http://docs.phalconphp.com/en/latest/reference/routing.html
  */
 
 // Routing

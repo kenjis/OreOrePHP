@@ -7,6 +7,8 @@
  * See public/.htaccess.
  * And you must update config/routes.pux.mux.php manually, if you change this file.
  * You can do it with update-mux.sh.
+ * 
+ * Documentaion: https://github.com/c9s/Pux
  */
 
 // Routing

@@ -1,4 +1,9 @@
 <?php
+/**
+ * Services Definition for Dice
+ * 
+ * Documentaition: http://r.je/dice.html
+ */
 
 return function () {
     $dice = new \Jasrags\Dice;
