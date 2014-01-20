@@ -1,6 +1,6 @@
 {
     "name": "kenjis/ore-ore-php",
-    "description": "A simple and fast PHP framework",
+    "description": "A simple and fast PHP 5.4+ glue framework with minimal learning cost.",
     "license": "MIT",
     "repositories": [
         {
