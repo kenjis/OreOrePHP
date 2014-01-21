@@ -18,8 +18,8 @@ OreOrePHP is using these great components.
 Testing
 
 * Mocking
-   * [AspectMock](https://github.com/Codeception/AspectMock)
    * [Mockery](https://github.com/padraic/mockery)
+   * [AspectMock](https://github.com/Codeception/AspectMock)
 
 ## Installation
 
@@ -34,13 +34,20 @@ $ chmod 777 cache
 
 http://example.com/{foo}[/{bar}[/{param1}[/{param2}[/{param3}]]]]
 
+Above URL excutes `Controller\Foo::actionBar($param1, $param2, $param3)`.
+
 ~~~
-foo    -> controller name -> Foo class
-bar    -> action method   -> actionBar() function
+foo    -> Controller -> Foo class
+bar    -> Action     -> actionBar() function
 param1 -> 1st param of the method
 param2 -> 2nd param of the method
 param3 -> 3rd param of the method
 ~~~
+
+You can also use HTTP method prefixed action in stead of actionBar().
+
+ * getBar() in case GET request
+ * postBar() in case POST request
 
 ## Convension
 
