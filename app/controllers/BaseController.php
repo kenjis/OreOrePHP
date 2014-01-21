@@ -59,18 +59,23 @@ class BaseController
     {
         $actionMethod = $this->findActionMethod($action);
 
-        if (! method_exists($this, $actionMethod)) {
+        if (! $this->methodExists($this, $actionMethod)) {
             $this->show404($actionMethod);
         }
 
         return $this->$actionMethod($params[0], $params[1], $params[2]);
     }
 
+    protected function methodExists($method)
+    {
+        return method_exists($this, $method);
+    }
+
     protected function findActionMethod($action)
     {
         $reqestMethod = strtolower($this->request->getServer('REQUEST_METHOD'));
         $actionMethod = $reqestMethod . ucfirst($action);
-        if (! method_exists($this, $actionMethod)) {
+        if (! $this->methodExists($this, $actionMethod)) {
             $actionMethod = 'action' . ucfirst($action);
         }
         

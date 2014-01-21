@@ -30,20 +30,39 @@ class BaseControllerTest extends \PHPUnit_Framework_TestCase {
         m::close();
     }
 
-    public function testfindActionMethod()
+    public function findActionMethodProvider()
     {
-        // @TODO getFoo and postFoo tests
+        return [
+            ['GET', false, 'actionIndex'],
+            ['GET', true, 'getIndex'],
+            ['POST', false, 'actionIndex'],
+            ['POST', true, 'postIndex'],
+        ];
+    }
+    
+    /**
+     * @covers Controller\BaseController::findActionMethod
+     * @dataProvider findActionMethodProvider
+     */
+    public function testfindActionMethod_actionIndex($requestMethod, $methodExists, $expected)
+    {
         $request = m::mock('kenjis\OreOrePHP\Request')
             ->shouldReceive('getServer')
             ->with('REQUEST_METHOD')
-            ->andReturn('GET')
+            ->andReturn($requestMethod)
             ->getMock();
-        
-        \Closure::bind(function () use ($request) {
-            $obj = new BaseController;
+        $obj = m::mock('Controller\\BaseController[methodExists]')
+           ->shouldAllowMockingProtectedMethods()
+           ->shouldReceive('methodExists')
+           ->andReturn($methodExists)
+           ->getMock();
+
+        \Closure::bind(function () use ($obj, $request, $expected) {
+            // set protected property
             $obj->request = $request;
+            // test protected method
             $test = $obj->findActionMethod('index');
-            $this->assertEquals($test, 'actionIndex');
+            $this->assertEquals($test, $expected);
         }, $this, 'Controller\\BaseController')->__invoke();
     }
 
