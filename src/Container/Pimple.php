@@ -25,23 +25,14 @@ class Pimple implements ContainerInterface
     
     public function resolve($class)
     {
-        if (substr($class, 0, 11) === 'Controller\\') {
-            $this->injectControllerConstructor($class);
-        }
-        return $this->container[$class];
-    }
-    
-    /**
-     * Automatic Constructor Injection for Controllers
-     * 
-     * @param string $class
-     * @return void
-     */
-    protected function injectControllerConstructor($class)
-    {
+        // Automatic injection
         $c = $this->container;
-        $c[$class] = function ($c) use ($class) {
-            return new $class();
-        };
+        if (! isset($c[$class])) {
+            $c[$class] = function ($c) use ($class) {
+                return new $class();
+            };
+        }
+        
+        return $this->container[$class];
     }
 }

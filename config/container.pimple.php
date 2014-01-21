@@ -2,10 +2,6 @@
 /**
  * Service Definition for Pimple
  * 
- * You might have to change injectControllerConstructor() method in 
- * "src/Container/Pimple.php", if you want to change automatic Constructor 
- * Injection for Controllers.
- * 
  * Documentaion: https://github.com/fabpot/Pimple
  */
 
