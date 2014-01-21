@@ -15,13 +15,13 @@ class BaseController
     protected $request;
     
     /**
-     *
      * @var \kenjis\OreOrePHP\Response
      */
     protected $respose;
     
     /**
      * Template Engine
+     * @var object
      */
     protected $templating;
     
