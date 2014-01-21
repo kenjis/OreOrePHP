@@ -42,18 +42,20 @@ class HelloTest extends \PHPUnit_Framework_TestCase {
      * @covers Controller\Hello::actionSay
      */
     public function testActionSay() {
+        $param = 'OreOrePHP';
+        
         $config     = m::mock('kenjis\OreOrePHP\Config');
         $request    = m::mock('kenjis\OreOrePHP\Request');
         $response   = m::mock('kenjis\OreOrePHP\Response');
         $templating = m::mock('Twig_Environment')
             ->shouldReceive('render')
-            ->with('hello.html', ['now' => '2014-01-21 02:20:14', 'name' => 'OreOrePHP'])
+            ->with('hello.html', ['now' => '2014-01-21 02:20:14', 'name' => $param])
             ->andReturn('Rendered HTML')
             ->getMock();
         $object = new Hello;
         $object->injectCoreDependancy($config, $request, $response, $templating);
 
-        $test = $object->actionSay('OreOrePHP');
+        $test = $object->actionSay($param);
         $expected = 'Rendered HTML';
         $this->assertEquals($expected, $test);
     }
