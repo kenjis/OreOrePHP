@@ -30,7 +30,7 @@ class Response
 
     public function setHttpHeader($name, $value)
     {
-        $this->httpHeader[$name] = $value;
+        $this->httpHeaders[$name] = $value;
     }
 
     public function send()
