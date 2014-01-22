@@ -10,7 +10,7 @@ return function () {
     
     // Templating (Twig)
     $c['templating'] = $c->share(function ($c) {
-        $loader = new \Twig_Loader_Filesystem(APPPATH . '/app/views');
+        $loader = new \Twig_Loader_Filesystem(APPPATH . '/views');
         return new \Twig_Environment($loader, ['cache' => APPPATH . '/cache']);
     });
     
