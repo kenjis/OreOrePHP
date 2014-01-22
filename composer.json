@@ -22,8 +22,8 @@
    "autoload": {
       "psr-4": {
           "kenjis\\OreOrePHP\\": "src/",
-          "Controller\\": "app/controllers/",
-          "Model\\": "app/models/"
+          "Controller\\": "app/Controller/",
+          "Model\\": "app/Model/"
       }
   }
 }

@@ -53,9 +53,9 @@ You can also use HTTP method prefixed action in stead of actionBar().
 
 ### Controller
 
-* Place in `app/controller/` folder.
-* PSR-4 autoloading.
+* Place in `app/Controller/` folder.
 * Namespace must be `Controller`.
+* PSR-4 autoloading.
 * Extend BaseController.
 * Class name must be ucfirst.
 * Function name must be camelCase.
@@ -63,9 +63,9 @@ You can also use HTTP method prefixed action in stead of actionBar().
 
 ### Model
 
-* Place in `app/models/` folder.
-* PSR-4 autoloading.
+* Place in `app/Model/` folder.
 * Namespace must be `Model`.
+* PSR-4 autoloading.
 
 ## License
 

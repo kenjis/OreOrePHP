@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "aef12f0965bc0aa9a557bed768ef3c2b",
+    "hash": "c6d6a6d74a2d46c69281582028a7022b",
     "packages": [
         {
             "name": "corneltek/pux",
@@ -502,12 +502,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/padraic/mockery.git",
-                "reference": "e7ac8f05f9e954d4387732e58d9be43b102fbe93"
+                "reference": "0163f082dee93c895497571afd458a04c48b0b7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/e7ac8f05f9e954d4387732e58d9be43b102fbe93",
-                "reference": "e7ac8f05f9e954d4387732e58d9be43b102fbe93",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/0163f082dee93c895497571afd458a04c48b0b7a",
+                "reference": "0163f082dee93c895497571afd458a04c48b0b7a",
                 "shasum": ""
             },
             "require": {
@@ -515,7 +515,8 @@
                 "php": ">=5.3.2"
             },
             "require-dev": {
-                "hamcrest/hamcrest-php": "~1.1"
+                "hamcrest/hamcrest-php": "~1.1",
+                "satooshi/php-coveralls": "dev-master"
             },
             "type": "library",
             "extra": {
@@ -558,7 +559,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2014-01-17 11:55:29"
+            "time": "2014-01-19 20:55:32"
         }
     ],
     "aliases": [

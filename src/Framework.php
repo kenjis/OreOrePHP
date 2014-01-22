@@ -55,7 +55,7 @@ class Framework
         list($controller, $action, $params) = $this->router->getRoute();
         
         try {
-            $controllerFilePath = APPPATH . '/controllers/' . $controller . '.php';
+            $controllerFilePath = APPPATH . '/Controller/' . $controller . '.php';
             $controllerName = 'Controller\\' . $controller;
             if (! file_exists($controllerFilePath)) {
                 throw new HttpNotFoundException($controllerName . ' is not found.');
