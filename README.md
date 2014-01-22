@@ -27,7 +27,7 @@ Testing
 $ git clone https://github.com/kenjis/OreOrePHP.git
 $ cd OreOrePHP
 $ composer install
-$ chmod 777 cache
+$ chmod 777 app/cache
 ~~~
 
 ## URL structure
