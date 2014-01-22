@@ -10,16 +10,28 @@
  * @link       https://github.com/kenjis/OreOrePHP
  */
 
-ini_set('display_errors', 1);
+use kenjis\OreOrePHP\Framework;
+use kenjis\OreOrePHP\Config;
+
 error_reporting(-1);
 
 define('ROOTPATH', realpath(__DIR__ . '/../'));
 require ROOTPATH . '/vendor/autoload.php';
-require ROOTPATH . '/config/class_alias.php';
 
+$config = new Config();
+$config['app']['env'] = 
+    isset($_SERVER['ORE_ENV']) ? $_SERVER['ORE_ENV'] : Framework::DEVELOPMENT;
+
+if ($config['app']['env'] === Framework::PRODUCTION) {
+    ini_set('display_errors', 0);
+} else {
+    ini_set('display_errors', 1);
+}
+
+require ROOTPATH . '/config/class_alias.php';
 require ROOTPATH . '/app/bootstrap.php';
 
-$app = new \kenjis\OreOrePHP\Framework(
+$app = new Framework(
     $container, $config, $router, $request, $response, $templating
 );
 $app->run();

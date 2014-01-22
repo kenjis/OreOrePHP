@@ -14,7 +14,17 @@ namespace kenjis\OreOrePHP;
 
 class Framework
 {
+    /**
+     * Constants for Application Environments
+     */
+    const PRODUCTION = 'PRODUCTION';
+    const DEVELOPMENT = 'DEVELOPMENT';
+    
+    /**
+     * @var Container
+     */
     protected $container;
+    
     protected $config;
     protected $router;
     protected $request;
