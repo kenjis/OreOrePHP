@@ -28,7 +28,6 @@ if ($config['app']['env'] === Framework::PRODUCTION) {
     ini_set('display_errors', 1);
 }
 
-require ROOTPATH . '/config/class_alias.php';
 require ROOTPATH . '/app/bootstrap.php';
 
 $app = new Framework(

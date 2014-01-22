@@ -16,6 +16,7 @@ error_reporting(-1);
 define('ROOTPATH', realpath(__DIR__ . '/../'));
 require ROOTPATH . '/vendor/autoload.php';
 require ROOTPATH . '/config/class_alias.php';
+require ROOTPATH . '/config/config.php';
 
 // Below is for Testing Only
 define('TESTPATH', __DIR__);
