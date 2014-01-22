@@ -11,13 +11,13 @@ return function () {
     // Templating (Twig)
     $rule1 = new \Jasrags\Dice\Rule;
     $rule1->instanceOf = 'Twig_Loader_Filesystem';
-    $rule1->constructParams = [__DIR__ . '/../app/views'];
+    $rule1->constructParams = [APPPATH . '/views'];
     $dice->addRule('$MyTwig_Loader_Filesystem', $rule1);
     $rule2 = new \Jasrags\Dice\Rule;
     $rule2->instanceOf = 'Twig_Environment';
     $rule2->shared = true;
     $rule2->constructParams = [[
-        'cache' => __DIR__ . '/../cache',
+        'cache' => APPPATH . '/cache',
         'auto_reload' => true,
     ]];
     $rule2->substitutions['Twig_LoaderInterface'] = 

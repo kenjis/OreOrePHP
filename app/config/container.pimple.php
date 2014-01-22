@@ -10,8 +10,8 @@ return function () {
     
     // Templating (Twig)
     $c['templating'] = $c->share(function ($c) {
-        $loader = new \Twig_Loader_Filesystem(ROOTPATH . '/app/views');
-        return new \Twig_Environment($loader, ['cache' => ROOTPATH . '/cache']);
+        $loader = new \Twig_Loader_Filesystem(APPPATH . '/app/views');
+        return new \Twig_Environment($loader, ['cache' => APPPATH . '/cache']);
     });
     
     return $c;

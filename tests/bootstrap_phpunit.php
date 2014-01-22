@@ -14,9 +14,11 @@ ini_set('display_errors', 1);
 error_reporting(-1);
 
 define('ROOTPATH', realpath(__DIR__ . '/../'));
+define('APPPATH', realpath(__DIR__ . '/../app'));
+
 require ROOTPATH . '/vendor/autoload.php';
-require ROOTPATH . '/config/class_alias.php';
-require ROOTPATH . '/config/config.php';
+require APPPATH . '/config/class_alias.php';
+require APPPATH . '/config/config.php';
 
 // Below is for Testing Only
 define('TESTPATH', __DIR__);
@@ -24,6 +26,6 @@ define('TESTPATH', __DIR__);
 $kernel = \AspectMock\Kernel::getInstance();
 $kernel->init([
     'debug'        => true,
-    'includePaths' => [ROOTPATH.'/src', ROOTPATH.'/app'],
-    'cacheDir'     => ROOTPATH.'/cache/AspectMock',
+    'includePaths' => [ROOTPATH.'/src', APPPATH],
+    'cacheDir'     => APPPATH.'/cache/AspectMock',
 ]);

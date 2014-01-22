@@ -9,11 +9,14 @@
     <filter>
         <whitelist>
             <directory suffix=".php">../app/</directory>
+            <exclude>
+                <directory suffix=".php">../app/config/</directory>
+                <directory suffix=".php">../app/cache/</directory>
+            </exclude>
             <directory suffix=".php">../src/</directory>
         </whitelist>
         <blacklist>
             <directory suffix=".php">../vendor/</directory>
-            <directory suffix=".php">../cache/</directory>
         </blacklist>
     </filter>
 </phpunit>

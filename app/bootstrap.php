@@ -1,7 +1,7 @@
 <?php
 
-require ROOTPATH . '/config/class_alias.php';
-require ROOTPATH . '/config/config.php';
+require APPPATH . '/config/class_alias.php';
+require APPPATH . '/config/config.php';
 
 /**
  * Create Objects
@@ -14,11 +14,11 @@ require ROOTPATH . '/config/config.php';
  *   $templating
  */
 // Use Dice as Container
-$getContainer = require ROOTPATH . '/config/container.dice.php';
+$getContainer = require APPPATH . '/config/container.dice.php';
 $container = new \kenjis\OreOrePHP\Container\Dice($getContainer());
 
 // Use Pimple as Container
-//$getContainer = require ROOTPATH . '/config/container.pimple.php';
+//$getContainer = require APPPATH . '/config/container.pimple.php';
 //$container = new \kenjis\OreOrePHP\Container\Pimple($getContainer());
 
 $request   = new \kenjis\OreOrePHP\Request();

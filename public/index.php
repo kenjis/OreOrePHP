@@ -15,7 +15,9 @@ use kenjis\OreOrePHP\Config;
 
 error_reporting(-1);
 
-define('ROOTPATH', realpath(__DIR__ . '/../'));
+define('ROOTPATH', realpath(__DIR__ . '/..'));
+define('APPPATH', realpath(__DIR__ . '/../app'));
+
 require ROOTPATH . '/vendor/autoload.php';
 
 $config = new Config();
@@ -28,7 +30,7 @@ if ($config['app']['env'] === Framework::PRODUCTION) {
     ini_set('display_errors', 1);
 }
 
-require ROOTPATH . '/app/bootstrap.php';
+require APPPATH . '/bootstrap.php';
 
 $app = new Framework(
     $container, $config, $router, $request, $response, $templating
