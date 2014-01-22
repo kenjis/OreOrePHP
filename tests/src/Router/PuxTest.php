@@ -60,7 +60,7 @@ class PuxTest extends \PHPUnit_Framework_TestCase
     public function testGetRoute_Controller_Method_Param($pathInfo, $expected)
     {
         $request = m::mock('kenjis\OreOrePHP\Request');
-        $request->shouldReceive('getServer')->with('USE_MUX')->andReturn(null);
+        $request->shouldReceive('getServer')->with('ORE_USE_MUX')->andReturn(null);
         $request->shouldReceive('getServer')->with('PATH_INFO')->andReturn($pathInfo);
         $object = new Pux($request);
         
@@ -74,7 +74,7 @@ class PuxTest extends \PHPUnit_Framework_TestCase
     public function testGetRoute_USE_MUX_On()
     {
         $request = m::mock('kenjis\OreOrePHP\Request');
-        $request->shouldReceive('getServer')->with('USE_MUX')->andReturn('1');
+        $request->shouldReceive('getServer')->with('ORE_USE_MUX')->andReturn('1');
         $request->shouldReceive('getServer')->with('PATH_INFO')->andReturn('/hello/say/ore');
         $object = new Pux($request);
         

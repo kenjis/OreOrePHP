@@ -32,7 +32,7 @@ class Pux implements RouterInterface
     public function getRoute()
     {
         // Whether use Pux Compiled Mux or not
-        $useMux = $this->request->getServer('USE_MUX');
+        $useMux = $this->request->getServer('ORE_USE_MUX');
         
         if ($useMux) {
             //echo 'use mux';

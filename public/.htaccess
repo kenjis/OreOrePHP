@@ -1,5 +1,5 @@
 ## If you want to use Pux Compiled Mux, Create config/mux.php and Uncomment below
-#SetEnv USE_MUX 1
+#SetEnv ORE_USE_MUX 1
 
 AddDefaultCharset UTF-8
 
