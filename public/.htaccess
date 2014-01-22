@@ -1,4 +1,8 @@
-## If you want to use Pux Compiled Mux, Create config/mux.php and Uncomment below
+## Application Environment
+#SetEnv ORE_ENV PRODUCTION
+
+## If you want to use Pux Compiled Mux, Uncomment below
+## See config/routes.pux.php for detail
 #SetEnv ORE_USE_MUX 1
 
 AddDefaultCharset UTF-8

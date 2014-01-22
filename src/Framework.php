@@ -58,7 +58,6 @@ class Framework
             $controllerFilePath = ROOTPATH . '/app/controllers/' . $controller . '.php';
             $controllerName = 'Controller\\' . $controller;
             if (! file_exists($controllerFilePath)) {
-                $this->response->setStatusCode(404);
                 throw new HttpNotFoundException($controllerName . ' is not found.');
             }
             
@@ -68,11 +67,23 @@ class Framework
             );
             
             $body = $c->run($action, $params);
-            $this->response->setBody($body);
+        } catch (HttpNotFoundException $e) {
+            $c = $this->container->resolve('Controller\\Error');
+            $c->injectCoreDependancy(
+                $this->config, $this->request, $this->response, $this->templating
+            );
             
-            $this->response->send();
+            $body = $c->show404($action, $e);
         } catch (\Exception $e) {
-            echo $e->getMessage();  // @TODO HTML-escaping
+            $c = $this->container->resolve('Controller\\Error');
+            $c->injectCoreDependancy(
+                $this->config, $this->request, $this->response, $this->templating
+            );
+            
+            $body = $c->show500($action, $e);
         }
+        
+        $this->response->setBody($body);
+        $this->response->send();
     }
 }

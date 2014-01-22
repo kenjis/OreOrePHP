@@ -16,8 +16,12 @@ return function () {
     $rule2 = new \Jasrags\Dice\Rule;
     $rule2->instanceOf = 'Twig_Environment';
     $rule2->shared = true;
-    $rule2->constructParams = [['cache' => __DIR__ . '/../cache']];
-    $rule2->substitutions['Twig_LoaderInterface'] = new \Jasrags\Dice\Instance('$MyTwig_Loader_Filesystem');
+    $rule2->constructParams = [[
+        'cache' => __DIR__ . '/../cache',
+        'auto_reload' => true,
+    ]];
+    $rule2->substitutions['Twig_LoaderInterface'] = 
+        new \Jasrags\Dice\Instance('$MyTwig_Loader_Filesystem');
     $dice->addRule('templating', $rule2);
 
     return $dice;

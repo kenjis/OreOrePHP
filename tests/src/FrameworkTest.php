@@ -114,11 +114,20 @@ class FrameworkTest extends \PHPUnit_Framework_TestCase
         $request = m::mock('kenjis\OreOrePHP\Request');
         $response = m::mock('kenjis\OreOrePHP\Response');
         $response->shouldReceive('setStatusCode')->with(404)->andReturn(null);
-        $container = m::mock('kenjis\OreOrePHP\Container\Dice');
+        $response->shouldReceive('setBody')->with('404 Not Found')->andReturn(null);
+        $response->shouldReceive('send')->andReturn(null);
         
-        $this->expectOutputString('Controller\Notfound is not found.');
+        $error = m::mock('Controller\Error');
+        $error->shouldAllowMockingProtectedMethods();
+        $error->shouldReceive('injectCoreDependancy')->with()->andReturn(null);
+        $error->shouldReceive('show404')->with('actionNotfound', 'kenjis\OreOrePHP\HttpNotFoundException')->andReturn('404 Not Found');
+        $container = m::mock('kenjis\OreOrePHP\Container\Dice')
+            ->shouldReceive('resolve')->with('Controller\Error')->andReturn($error)
+            ->getMock();
+        
         $object = new Framework($container, $config, $router, $request, $response, $twig);
         $test = $object->run();
+        $this->assertEquals('', $test);
     }
 
 }

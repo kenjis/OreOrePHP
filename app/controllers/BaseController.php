@@ -42,7 +42,7 @@ class BaseController
         $this->templating = $templating;
     }
 
-    protected function show404($action)
+    protected function show404($action, \HttpNotFoundException $exception = null)
     {
         $this->response->setStatusCode(404);
         throw new \HttpNotFoundException(get_class($this) . '::' . $action . ' is not found.');
@@ -60,7 +60,7 @@ class BaseController
         $actionMethod = $this->findActionMethod($action);
 
         if (! $this->methodExists($actionMethod)) {
-            $this->show404($actionMethod);
+            return $this->show404($actionMethod);
         }
 
         return $this->$actionMethod($params[0], $params[1], $params[2]);
