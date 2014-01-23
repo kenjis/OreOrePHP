@@ -27,5 +27,5 @@ $kernel = \AspectMock\Kernel::getInstance();
 $kernel->init([
     'debug'        => true,
     'includePaths' => [ROOTPATH.'/src', APPPATH],
-    'cacheDir'     => APPPATH.'/cache/AspectMock',
+    'cacheDir'     => APPPATH.'/var/cache/AspectMock',
 ]);

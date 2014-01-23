@@ -18,7 +18,7 @@ return function () {
     $rule->instanceOf = 'Twig_Environment';
     $rule->shared = true;
     $rule->constructParams = [[
-        'cache' => APPPATH . '/cache',
+        'cache' => APPPATH . '/var/cache',
         'auto_reload' => true,
     ]];
     $rule->substitutions['Twig_LoaderInterface'] = 
