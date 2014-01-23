@@ -14,10 +14,12 @@ OreOrePHP is using these great components.
    * [Twig](https://github.com/fabpot/Twig)
 * Container
    * [Dice](https://github.com/Jasrags/Dice) or [Pimple](https://github.com/fabpot/Pimple)
-* Logger
+* Logger (PSR-3)
    * [Monolog](https://github.com/Seldaek/monolog)
 
 Testing
+
+* [PHPUnit](https://github.com/sebastianbergmann/phpunit/)
 
 * Mocking
    * [Mockery](https://github.com/padraic/mockery)
