@@ -33,7 +33,7 @@ class Phalcon implements RouterInterface
      */
     public function getRoute()
     {
-        $router = require APPPATH . '/config/routes.phalcon.php';
+        $router = require $this->appPath . '/config/routes.phalcon.php';
         $pathinfo = $this->request->getServer('PATH_INFO') ?: '/';
         $router->handle($pathinfo);
         
