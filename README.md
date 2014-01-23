@@ -14,6 +14,8 @@ OreOrePHP is using these great components.
    * [Twig](https://github.com/fabpot/Twig)
 * Container
    * [Dice](https://github.com/Jasrags/Dice) or [Pimple](https://github.com/fabpot/Pimple)
+* Logger
+   * [Monolog](https://github.com/Seldaek/monolog)
 
 Testing
 
