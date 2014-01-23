@@ -13,7 +13,8 @@
         "twig/twig": "1.*",
         "corneltek/pux": "~1.3",
         "pimple/pimple": "dev-master",
-        "jasrags/dice": "dev-develop"
+        "jasrags/dice": "dev-develop",
+        "monolog/monolog": "~1.7"
     },
     "require-dev": {
         "codeception/aspect-mock": "*",

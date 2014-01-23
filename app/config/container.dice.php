@@ -9,20 +9,30 @@ return function () {
     $dice = new \Jasrags\Dice;
 
     // Templating (Twig)
-    $rule1 = new \Jasrags\Dice\Rule;
-    $rule1->instanceOf = 'Twig_Loader_Filesystem';
-    $rule1->constructParams = [APPPATH . '/views'];
-    $dice->addRule('$MyTwig_Loader_Filesystem', $rule1);
-    $rule2 = new \Jasrags\Dice\Rule;
-    $rule2->instanceOf = 'Twig_Environment';
-    $rule2->shared = true;
-    $rule2->constructParams = [[
+    $rule = new \Jasrags\Dice\Rule;
+    $rule->instanceOf = 'Twig_Loader_Filesystem';
+    $rule->constructParams = [APPPATH . '/views'];
+    $dice->addRule('Twig_Loader_Filesystem', $rule);
+    
+    $rule = new \Jasrags\Dice\Rule;
+    $rule->instanceOf = 'Twig_Environment';
+    $rule->shared = true;
+    $rule->constructParams = [[
         'cache' => APPPATH . '/cache',
         'auto_reload' => true,
     ]];
-    $rule2->substitutions['Twig_LoaderInterface'] = 
-        new \Jasrags\Dice\Instance('$MyTwig_Loader_Filesystem');
-    $dice->addRule('templating', $rule2);
+    $rule->substitutions['Twig_LoaderInterface'] = 
+        new \Jasrags\Dice\Instance('Twig_Loader_Filesystem');
+    $dice->addRule('templating', $rule);
+
+    // Logger (monolog)
+    $rule = new \Jasrags\Dice\Rule;
+    $rule->instanceOf = 'Monolog\Logger';
+    $rule->shared = true;
+    $rule->constructParams = [
+        'app', [new \Monolog\Handler\StreamHandler(APPPATH . '/var/log/app.log')]
+    ];
+    $dice->addRule('logger', $rule);
 
     return $dice;
 };

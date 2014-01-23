@@ -98,6 +98,7 @@ class BaseControllerTest extends \PHPUnit_Framework_TestCase {
             ->getMock();
         $config = m::mock('kenjis\OreOrePHP\Config');
         $response = m::mock('kenjis\OreOrePHP\Response');
+        $logger = m::mock('Monolog\Logger');
         
         if ($requestMethod === 'GET') {
             $object = m::mock('Controller\\BaseController[methodExists]')
@@ -125,7 +126,7 @@ class BaseControllerTest extends \PHPUnit_Framework_TestCase {
                 ->getMock();
         }
         
-        $object->injectCoreDependancy($config, $request, $response, null);
+        $object->injectCoreDependancy($config, $request, $response, $logger, null);
         
         $test = $object->run($action);
         $this->assertEquals($expected, $test);
@@ -146,6 +147,11 @@ class BaseControllerTest extends \PHPUnit_Framework_TestCase {
             ->with(404)
             ->andReturn(null)
             ->getMock();
+        $logger = m::mock('Monolog\Logger')
+            ->shouldReceive('error')
+            ->with('Mockery_1_Controller_BaseController::actionNotexists is not found.')
+            ->andReturn(null)
+            ->getMock();
         
         $object = m::mock('Controller\\BaseController[methodExists]')
             ->shouldAllowMockingProtectedMethods()
@@ -162,7 +168,7 @@ class BaseControllerTest extends \PHPUnit_Framework_TestCase {
             ->with('actionNotexists')
             ->andReturn(false)
             ->getMock();
-        $object->injectCoreDependancy($config, $request, $response, null);
+        $object->injectCoreDependancy($config, $request, $response, $logger, null);
         
         $test = $object->run('notexists');
     }

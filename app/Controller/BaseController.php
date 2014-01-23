@@ -25,6 +25,11 @@ class BaseController
      */
     protected $templating;
     
+    /**
+     * @var \Psr\Log\LoggerInterface
+     */
+    protected $logger;
+
     public function __construct()
     {
     }
@@ -33,12 +38,15 @@ class BaseController
         \Config $config,
         \Request $request,
         \Response $response,
+        \Psr\Log\LoggerInterface $logger,
         $templating
+        
     )
     {
         $this->config     = $config;
         $this->request    = $request;
         $this->response   = $response;
+        $this->logger     = $logger;
         $this->templating = $templating;
     }
 
@@ -60,6 +68,8 @@ class BaseController
         $actionMethod = $this->findActionMethod($action);
 
         if (! $this->methodExists($actionMethod)) {
+            $error = get_class($this) . '::' . $actionMethod . ' is not found.';
+            $this->logger->error($error);
             return $this->show404($actionMethod);
         }
 

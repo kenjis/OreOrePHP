@@ -52,8 +52,10 @@ class HelloTest extends \PHPUnit_Framework_TestCase {
             ->with('hello.html', ['now' => '2014-01-21 02:20:14', 'name' => $param])
             ->andReturn('Rendered HTML')
             ->getMock();
+        $logger = m::mock('Monolog\Logger');
+        
         $object = new Hello;
-        $object->injectCoreDependancy($config, $request, $response, $templating);
+        $object->injectCoreDependancy($config, $request, $response, $logger, $templating);
 
         $test = $object->actionSay($param);
         $expected = 'Rendered HTML';

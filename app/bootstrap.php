@@ -11,6 +11,7 @@ require APPPATH . '/config/config.php';
  *   $router
  *   $request
  *   $response
+ *   $logger
  *   $templating
  */
 // Use Dice as Container
@@ -31,6 +32,9 @@ $router    = new \kenjis\OreOrePHP\Router\Pux($request);
 //$router    = new \kenjis\OreOrePHP\Router\Phalcon($request);
 
 $response  = new \kenjis\OreOrePHP\Response();
+
+// Logger
+$logger = $container->resolve('logger');
 
 // Template Engine
 $templating = $container->resolve('templating');

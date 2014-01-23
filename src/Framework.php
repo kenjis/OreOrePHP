@@ -35,15 +35,23 @@ class Framework
      */
     protected $response;
     
+    /**
+     * @var Psr\Log\LoggerInterface
+     */
+    protected $logger;
+    
     protected $templating;
 
-    public function __construct($container, $config, $router, $request, $response, $templating)
+    public function __construct(
+        $container, $config, $router, $request, $response, $logger, $templating
+    )
     {
         $this->container  = $container;
         $this->config     = $config;
         $this->router     = $router;
         $this->request    = $request;
         $this->response   = $response;
+        $this->logger     = $logger;
         $this->templating = $templating;
     }
 
@@ -58,26 +66,32 @@ class Framework
             $controllerFilePath = APPPATH . '/Controller/' . $controller . '.php';
             $controllerName = 'Controller\\' . $controller;
             if (! file_exists($controllerFilePath)) {
-                throw new HttpNotFoundException($controllerName . ' is not found.');
+                $error = $controllerName . ' is not found.';
+                $this->logger->error($error);
+                throw new HttpNotFoundException($error);
             }
             
             $c = $this->container->resolve($controllerName);
             $c->injectCoreDependancy(
-                $this->config, $this->request, $this->response, $this->templating
+                $this->config, $this->request, $this->response, 
+                $this->logger, $this->templating
             );
             
             $body = $c->run($action, $params);
         } catch (HttpNotFoundException $e) {
             $c = $this->container->resolve('Controller\\Error');
             $c->injectCoreDependancy(
-                $this->config, $this->request, $this->response, $this->templating
+                $this->config, $this->request, $this->response, 
+                $this->logger, $this->templating
             );
             
             $body = $c->show404($action, $e);
         } catch (\Exception $e) {
+            //var_dump($e); exit;
             $c = $this->container->resolve('Controller\\Error');
             $c->injectCoreDependancy(
-                $this->config, $this->request, $this->response, $this->templating
+                $this->config, $this->request, $this->response, 
+                $this->logger, $this->templating
             );
             
             $body = $c->show500($action, $e);

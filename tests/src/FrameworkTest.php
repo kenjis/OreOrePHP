@@ -62,8 +62,9 @@ class FrameworkTest extends \PHPUnit_Framework_TestCase
             'kenjis\OreOrePHP\Response',
             ['setBody' => null, 'send' => 'I am world.']
         )->make();
+        $logger = test::double('Monolog\Logger')->make();
         
-        $object = new Framework($container, $config, $router, $request, $response, $twig);
+        $object = new Framework($container, $config, $router, $request, $response, $logger, $twig);
         $test = $object->run();
         $expected = '';
         $this->assertEquals($expected, $test);
@@ -86,14 +87,16 @@ class FrameworkTest extends \PHPUnit_Framework_TestCase
             ->shouldReceive('setBody')->with('I am world.')->andReturn(null)
             ->getMock();
         $response->shouldReceive('send')->andReturn('I am world.');
+        $logger = m::mock('Monolog\Logger');
         $hello = m::mock('Controller\Hello');
         $hello->shouldReceive('run')->andReturn('I am world.');
-        $hello->shouldReceive('injectCoreDependancy')->with()->andReturn(null);
+        $hello->shouldReceive('injectCoreDependancy')
+            ->with($config, $request, $response, $logger, $twig)->andReturn(null);
         $container = m::mock('kenjis\OreOrePHP\Container\Dice')
             ->shouldReceive('resolve')->with('Controller\Hello')->andReturn($hello)
             ->getMock();
         
-        $object = new Framework($container, $config, $router, $request, $response, $twig);
+        $object = new Framework($container, $config, $router, $request, $response, $logger, $twig);
         $test = $object->run();
         $expected = '';
         $this->assertEquals($expected, $test);
@@ -116,16 +119,19 @@ class FrameworkTest extends \PHPUnit_Framework_TestCase
         $response->shouldReceive('setStatusCode')->with(404)->andReturn(null);
         $response->shouldReceive('setBody')->with('404 Not Found')->andReturn(null);
         $response->shouldReceive('send')->andReturn(null);
+        $logger = m::mock('Monolog\Logger');
+        $logger->shouldReceive('error')->with('Controller\Notfound is not found.')->andReturn(null);
         
         $error = m::mock('Controller\Error');
         $error->shouldAllowMockingProtectedMethods();
-        $error->shouldReceive('injectCoreDependancy')->with()->andReturn(null);
+        $error->shouldReceive('injectCoreDependancy')
+            ->with($config, $request, $response, $logger, $twig)->andReturn(null);
         $error->shouldReceive('show404')->with('actionNotfound', 'kenjis\OreOrePHP\HttpNotFoundException')->andReturn('404 Not Found');
         $container = m::mock('kenjis\OreOrePHP\Container\Dice')
             ->shouldReceive('resolve')->with('Controller\Error')->andReturn($error)
             ->getMock();
         
-        $object = new Framework($container, $config, $router, $request, $response, $twig);
+        $object = new Framework($container, $config, $router, $request, $response, $logger, $twig);
         $test = $object->run();
         $this->assertEquals('', $test);
     }

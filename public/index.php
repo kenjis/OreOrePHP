@@ -33,6 +33,6 @@ if ($config['app']['env'] === Framework::PRODUCTION) {
 require APPPATH . '/bootstrap.php';
 
 $app = new Framework(
-    $container, $config, $router, $request, $response, $templating
+    $container, $config, $router, $request, $response, $logger, $templating
 );
 $app->run();

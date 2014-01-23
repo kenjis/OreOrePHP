@@ -14,5 +14,12 @@ return function () {
         return new \Twig_Environment($loader, ['cache' => APPPATH . '/cache']);
     });
     
+    // Logger (monolog)
+    $c['logger'] = $c->share(function ($c) {
+        $logger = new \Monolog\Logger('app');
+        $logger->pushHandler(new \Monolog\Handler\StreamHandler(APPPATH . '/var/log/app.log'));
+        return $logger;
+    });
+    
     return $c;
 };
