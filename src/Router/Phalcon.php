@@ -17,10 +17,12 @@ use kenjis\OreOrePHP\Request;
 
 class Phalcon implements RouterInterface
 {
+    protected $appPath;
     protected $request;
     
-    public function __construct(Request $request)
+    public function __construct($appPath, Request $request)
     {
+        $this->appPath = $appPath;
         $this->request = $request;
     }
 

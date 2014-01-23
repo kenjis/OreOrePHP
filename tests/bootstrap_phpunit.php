@@ -14,9 +14,9 @@ ini_set('display_errors', 1);
 error_reporting(-1);
 
 define('ROOTPATH', realpath(__DIR__ . '/../'));
-define('APPPATH', realpath(__DIR__ . '/../app'));
-
 require ROOTPATH . '/vendor/autoload.php';
+
+define('APPPATH', realpath(__DIR__ . '/../app'));
 require APPPATH . '/config/class_alias.php';
 require APPPATH . '/config/config.php';
 

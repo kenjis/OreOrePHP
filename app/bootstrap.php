@@ -1,7 +1,7 @@
 <?php
 
-require APPPATH . '/config/class_alias.php';
-require APPPATH . '/config/config.php';
+require $config['app']['path'] . '/config/class_alias.php';
+require $config['app']['path'] . '/config/config.php';
 
 /**
  * Create Objects
@@ -15,21 +15,21 @@ require APPPATH . '/config/config.php';
  *   $templating
  */
 // Use Dice as Container
-$getContainer = require APPPATH . '/config/container.dice.php';
+$getContainer = require $config['app']['path'] . '/config/container.dice.php';
 $container = new \kenjis\OreOrePHP\Container\Dice($getContainer());
 
 // Use Pimple as Container
-//$getContainer = require APPPATH . '/config/container.pimple.php';
+//$getContainer = require $config['app']['path'] . '/config/container.pimple.php';
 //$container = new \kenjis\OreOrePHP\Container\Pimple($getContainer());
 
 $request   = new \kenjis\OreOrePHP\Request();
 $request->fromGlobals();
 
 // Use Pux as Router
-$router    = new \kenjis\OreOrePHP\Router\Pux($request);
+$router    = new \kenjis\OreOrePHP\Router\Pux($config['app']['path'], $request);
 
 // Use Phalcon as Router
-//$router    = new \kenjis\OreOrePHP\Router\Phalcon($request);
+//$router    = new \kenjis\OreOrePHP\Router\Phalcon($config['app']['path'], $request);
 
 $response  = new \kenjis\OreOrePHP\Response();
 

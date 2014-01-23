@@ -11,7 +11,7 @@
             <directory suffix=".php">../app/</directory>
             <exclude>
                 <directory suffix=".php">../app/config/</directory>
-                <directory suffix=".php">../app/cache/</directory>
+                <directory suffix=".php">../app/var/cache/</directory>
             </exclude>
             <directory suffix=".php">../src/</directory>
         </whitelist>

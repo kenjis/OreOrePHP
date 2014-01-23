@@ -52,7 +52,7 @@ class FrameworkTest extends \PHPUnit_Framework_TestCase
                 return $hello;
             }]
         )->construct($dice);
-        $config = test::double('kenjis\OreOrePHP\Config')->construct([]);
+        $config = test::double('kenjis\OreOrePHP\Config')->construct(['app' => ['path' => APPPATH]]);
         $router = test::double(
             'kenjis\OreOrePHP\Router\Pux',
             ['getRoute' => ['Hello', 'actionSay', ['world', null, null]]]
@@ -77,7 +77,7 @@ class FrameworkTest extends \PHPUnit_Framework_TestCase
     {
         $dice = m::mock('Jasrags\Dice');
         $twig = m::mock('Twig_Environment');
-        $config = m::mock('kenjis\OreOrePHP\Config');
+        $config = m::mock(new Config(['app' => ['path' => APPPATH]]));
         $router = m::mock('kenjis\OreOrePHP\Router\Pux')
             ->shouldReceive('getRoute')
             ->andReturn(['Hello', 'actionSay', ['world', null, null]])
@@ -109,7 +109,7 @@ class FrameworkTest extends \PHPUnit_Framework_TestCase
     {
         $dice = m::mock('Jasrags\Dice');
         $twig = m::mock('Twig_Environment');
-        $config = m::mock('kenjis\OreOrePHP\Config');
+        $config = m::mock(new Config(['app' => ['path' => APPPATH]]));
         $router = m::mock('kenjis\OreOrePHP\Router\Pux')
             ->shouldReceive('getRoute')
             ->andReturn(['Notfound', 'actionNotfound', [null, null, null]])

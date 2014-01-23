@@ -17,10 +17,12 @@ use kenjis\OreOrePHP\Request;
 
 class Pux implements RouterInterface
 {
+    protected $appPath;
     protected $request;
     
-    public function __construct(Request $request)
+    public function __construct($appPath, Request $request)
     {
+        $this->appPath = $appPath;
         $this->request = $request;
     }
 
@@ -36,10 +38,10 @@ class Pux implements RouterInterface
         
         if ($useMux) {
             //echo 'use mux';
-            $mux = require APPPATH . '/config/routes.pux.mux.php';
+            $mux = require $this->appPath . '/config/routes.pux.mux.php';
         } else {
             //echo 'not use mux';
-            $mux = require APPPATH . '/config/routes.pux.php';
+            $mux = require $this->appPath . '/config/routes.pux.php';
         }
 
         $pathinfo = $this->request->getServer('PATH_INFO') ?: '/';

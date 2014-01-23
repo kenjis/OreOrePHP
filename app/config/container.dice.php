@@ -5,20 +5,20 @@
  * Documentaition: http://r.je/dice.html
  */
 
-return function () {
+return function () use ($config) {
     $dice = new \Jasrags\Dice;
 
     // Templating (Twig)
     $rule = new \Jasrags\Dice\Rule;
     $rule->instanceOf = 'Twig_Loader_Filesystem';
-    $rule->constructParams = [APPPATH . '/views'];
+    $rule->constructParams = [$config['app']['path'] . '/views'];
     $dice->addRule('Twig_Loader_Filesystem', $rule);
     
     $rule = new \Jasrags\Dice\Rule;
     $rule->instanceOf = 'Twig_Environment';
     $rule->shared = true;
     $rule->constructParams = [[
-        'cache' => APPPATH . '/var/cache',
+        'cache' => $config['app']['path'] . '/var/cache',
         'auto_reload' => true,
     ]];
     $rule->substitutions['Twig_LoaderInterface'] = 
@@ -30,7 +30,7 @@ return function () {
     $rule->instanceOf = 'Monolog\Logger';
     $rule->shared = true;
     $rule->constructParams = [
-        'app', [new \Monolog\Handler\StreamHandler(APPPATH . '/var/log/app.log')]
+        'app', [new \Monolog\Handler\StreamHandler($config['app']['path'] . '/var/log/app.log')]
     ];
     $dice->addRule('logger', $rule);
 

@@ -19,6 +19,7 @@ class Framework
      */
     const PRODUCTION = 'PRODUCTION';
     const DEVELOPMENT = 'DEVELOPMENT';
+    const TEST = 'TEST';
     
     /**
      * @var Container
@@ -63,7 +64,7 @@ class Framework
         list($controller, $action, $params) = $this->router->getRoute();
         
         try {
-            $controllerFilePath = APPPATH . '/Controller/' . $controller . '.php';
+            $controllerFilePath = $this->config['app']['path'] . '/Controller/' . $controller . '.php';
             $controllerName = 'Controller\\' . $controller;
             if (! file_exists($controllerFilePath)) {
                 $error = $controllerName . ' is not found.';
