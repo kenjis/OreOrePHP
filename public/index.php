@@ -18,11 +18,10 @@ error_reporting(-1);
 define('ROOTPATH', realpath(__DIR__ . '/..'));
 require ROOTPATH . '/vendor/autoload.php';
 
-$config = new Config();
 // Application Environment
 $config['app']['env'] = 
     isset($_SERVER['ORE_ENV']) ? $_SERVER['ORE_ENV'] : Framework::DEVELOPMENT;
-// Path of app folder
+// Path of app/ folder
 $config['app']['path'] = realpath(__DIR__ . '/../app');
 
 if ($config['app']['env'] === Framework::PRODUCTION) {

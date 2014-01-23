@@ -8,6 +8,7 @@ require $config['app']['path'] . '/config/config.php';
  * 
  * You must set: 
  *   $container
+ *   $config
  *   $router
  *   $request
  *   $response
@@ -22,16 +23,10 @@ $container = new \kenjis\OreOrePHP\Container\Dice($getContainer());
 //$getContainer = require $config['app']['path'] . '/config/container.pimple.php';
 //$container = new \kenjis\OreOrePHP\Container\Pimple($getContainer());
 
-$request   = new \kenjis\OreOrePHP\Request();
-$request->fromGlobals();
-
-// Use Pux as Router
-$router    = new \kenjis\OreOrePHP\Router\Pux($config['app']['path'], $request);
-
-// Use Phalcon as Router
-//$router    = new \kenjis\OreOrePHP\Router\Phalcon($config['app']['path'], $request);
-
-$response  = new \kenjis\OreOrePHP\Response();
+$config   = $container->resolve('kenjis\OreOrePHP\Config');
+$request  = $container->resolve('kenjis\OreOrePHP\Request');
+$router   = $container->resolve('router');
+$response = $container->resolve('kenjis\OreOrePHP\Response');
 
 // Logger
 $logger = $container->resolve('logger');
