@@ -4,6 +4,12 @@
 
 A simple and fast PHP 5.4+ "glue" framework with minimal learning cost.
 
+## Concepts
+
+* Create your own framework with your favorite components, because you're the best person who knows what you really need.
+* Don't depend on a specific framework, because its life might be shorter than your application's life. In fact, even Symfony LTS has only 3 years life.
+* Minimize learning cost of your framework. Make it possible that you can start to build your application with the framework today, if you know PHP, how to use your components.
+
 ## Using Components
 
 OreOrePHP is using these great components.
@@ -20,7 +26,6 @@ OreOrePHP is using these great components.
 Testing
 
 * [PHPUnit](https://github.com/sebastianbergmann/phpunit/)
-
 * Mocking
    * [Mockery](https://github.com/padraic/mockery)
    * [AspectMock](https://github.com/Codeception/AspectMock)
@@ -42,7 +47,7 @@ Above URL excutes `Controller\Foo::actionBar($param1, $param2, $param3)`.
 
 ~~~
 foo    -> Controller -> Foo class
-bar    -> Action     -> actionBar() function
+bar    -> Action     -> actionBar() method
 param1 -> 1st param of the method
 param2 -> 2nd param of the method
 param3 -> 3rd param of the method
@@ -50,8 +55,8 @@ param3 -> 3rd param of the method
 
 You can also use HTTP method prefixed action in stead of actionBar().
 
- * getBar() in case GET request
- * postBar() in case POST request
+ * `getBar()` in case GET request
+ * `postBar()` in case POST request
 
 ## Convension
 
