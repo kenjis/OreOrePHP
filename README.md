@@ -8,7 +8,7 @@ A simple and fast PHP 5.4+ "glue" framework with minimal learning cost.
 
 * Create your own framework with your favorite components, because you're the best person who knows what you really need.
 * Don't depend on a specific framework, because its life might be shorter than your application's life. In fact, even Symfony LTS has only 3 years life.
-* Minimize learning cost of your framework. Make it possible that you can start to build your application with the framework today, if you know PHP, how to use your components.
+* Minimize learning cost of your framework. Make it possible that you can start to build your application with the framework today, if you know PHP and how to use your components.
 
 ## Using Components
 
