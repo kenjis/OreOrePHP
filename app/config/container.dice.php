@@ -1,6 +1,6 @@
 <?php
 /**
- * Services Definition for Dice
+ * Service Definitions for Dice
  * 
  * Documentaition: http://r.je/dice.html
  */

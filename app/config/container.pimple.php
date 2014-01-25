@@ -1,6 +1,6 @@
 <?php
 /**
- * Service Definition for Pimple
+ * Service Definitions for Pimple
  * 
  * Documentaion: https://github.com/fabpot/Pimple
  */

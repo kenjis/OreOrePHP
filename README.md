@@ -55,10 +55,10 @@ param3 -> 3rd param of the method
 
 You can also use HTTP method prefixed action in stead of actionBar().
 
- * `getBar()` in case GET request
- * `postBar()` in case POST request
+ * `getBar()` in case of GET request
+ * `postBar()` in case of POST request
 
-## Convension
+## Convensions
 
 ### Controller
 
