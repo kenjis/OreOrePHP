@@ -42,8 +42,11 @@ class ResponseTest extends \PHPUnit_Framework_TestCase {
         $this->object->setStatusCode(404);
         $this->object->setHttpHeader('Content-Type', 'text/plain');
         $this->object->setBody($expected);
-        $this->expectOutputString($expected);
+        
+        ob_start();
         $test = $this->object->send();
+        $output = ob_get_clean();
+        $this->assertEquals($expected, $output);
     }
 
 }

@@ -65,9 +65,12 @@ class FrameworkTest extends \PHPUnit_Framework_TestCase
         $logger = test::double('Monolog\Logger')->make();
         
         $object = new Framework($container, $config, $router, $request, $response, $logger, $twig);
-        $test = $object->run();
-        $expected = '';
-        $this->assertEquals($expected, $test);
+        
+        ob_start();
+        $object->run();
+        $output = ob_get_clean();
+        $expected = 'I am world.';
+        $this->assertEquals($expected, $output);
     }
     
     /**
