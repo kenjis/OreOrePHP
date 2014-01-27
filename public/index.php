@@ -11,7 +11,6 @@
  */
 
 use kenjis\OreOrePHP\Framework;
-use kenjis\OreOrePHP\Config;
 
 error_reporting(-1);
 
