@@ -17,7 +17,7 @@ interface RouterInterface
     /**
      * Get Route
      * 
-     * @return array [$controller, $action, $params]
+     * @return array [$controllerName, $action, $params]
      */
     public function getRoute();
 }

@@ -53,11 +53,11 @@ class Pux implements RouterInterface
 
         // Resolve controller name
         if ($route[2][0] === ':dummy') {
-            $controller = ucfirst($route[3]['vars']['controller']);
+            $controllerName = ucfirst($route[3]['vars']['controller']);
         } elseif ($route === null) {
-            $controller = '__No_Route_Found__';
+            $controllerName = '__No_Route_Found__';
         } else {
-            $controller = ucfirst($route[2][0]);
+            $controllerName = ucfirst($route[2][0]);
         }
 
         // Resolve action method name
@@ -78,7 +78,7 @@ class Pux implements RouterInterface
             $params[$i] = isset($route[3]['vars']['param' . $i]) ? $route[3]['vars']['param' . $i] : null;
         }
 
-        //var_dump($controller, $action, $params);
-        return [$controller, $action, $params];
+        //var_dump($controllerName, $action, $params);
+        return [$controllerName, $action, $params];
     }
 }

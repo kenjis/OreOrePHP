@@ -22,22 +22,26 @@ class Framework
     const TEST = 'TEST';
     
     /**
-     * @var Container
+     * @var \kenjis\OreOrePHP\ContainerInterface
      */
     protected $container;
     
     protected $config;
+    
+    /**
+     * @var \kenjis\OreOrePHP\RouterInterface
+     */
     protected $router;
+    
     protected $request;
     
     /**
-     *
-     * @var Response
+     * @var \kenjis\OreOrePHP\Response
      */
     protected $response;
     
     /**
-     * @var Psr\Log\LoggerInterface
+     * @var \Psr\Log\LoggerInterface
      */
     protected $logger;
     
@@ -61,41 +65,41 @@ class Framework
      */
     public function run()
     {
-        list($controller, $action, $params) = $this->router->getRoute();
+        list($controllerName, $action, $params) = $this->router->getRoute();
         
         try {
-            $controllerFilePath = $this->config['app']['path'] . '/Controller/' . $controller . '.php';
-            $controllerName = 'Controller\\' . $controller;
+            $controllerFilePath = $this->config['app']['path'] . '/Controller/' . $controllerName . '.php';
+            $FullControllerName = 'Controller\\' . $controllerName;
             if (! file_exists($controllerFilePath)) {
-                $error = $controllerName . ' is not found.';
+                $error = $FullControllerName . ' is not found.';
                 $this->logger->error($error);
                 throw new HttpNotFoundException($error);
             }
             
-            $c = $this->container->resolve($controllerName);
-            $c->injectCoreDependancy(
+            $controller = $this->container->resolve($FullControllerName);
+            $controller->injectCoreDependancy(
                 $this->config, $this->request, $this->response, 
                 $this->logger, $this->templating
             );
             
-            $body = $c->run($action, $params);
+            $body = $controller->run($action, $params);
         } catch (HttpNotFoundException $e) {
-            $c = $this->container->resolve('Controller\\Error');
-            $c->injectCoreDependancy(
+            $controller = $this->container->resolve('Controller\\Error');
+            $controller->injectCoreDependancy(
                 $this->config, $this->request, $this->response, 
                 $this->logger, $this->templating
             );
             
-            $body = $c->show404($action, $e);
+            $body = $controller->show404($action, $e);
         } catch (\Exception $e) {
             //var_dump($e); exit;
-            $c = $this->container->resolve('Controller\\Error');
-            $c->injectCoreDependancy(
+            $controller = $this->container->resolve('Controller\\Error');
+            $controller->injectCoreDependancy(
                 $this->config, $this->request, $this->response, 
                 $this->logger, $this->templating
             );
             
-            $body = $c->show500($action, $e);
+            $body = $controller->show500($action, $e);
         }
         
         $this->response->setBody($body);
