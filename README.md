@@ -68,7 +68,7 @@ You can also use HTTP method prefixed action in stead of `actionBar()`.
 * Extend `BaseController`.
 * Class name must be ucfirst.
 * Function name must be camelCase.
-* actionIndex() method is the default action.
+* `actionIndex()` method is the default action.
 
 ### Model
 
