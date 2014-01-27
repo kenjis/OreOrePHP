@@ -53,7 +53,7 @@ param2 -> 2nd param of the method
 param3 -> 3rd param of the method
 ~~~
 
-You can also use HTTP method prefixed action in stead of actionBar().
+You can also use HTTP method prefixed action in stead of `actionBar()`.
 
  * `getBar()` in case of GET request
  * `postBar()` in case of POST request
@@ -65,7 +65,7 @@ You can also use HTTP method prefixed action in stead of actionBar().
 * Place in `app/Controller/` folder.
 * Namespace must be `Controller`.
 * PSR-4 autoloading.
-* Extend BaseController.
+* Extend `BaseController`.
 * Class name must be ucfirst.
 * Function name must be camelCase.
 * actionIndex() method is the default action.
