@@ -17,11 +17,13 @@ error_reporting(-1);
 define('ROOTPATH', realpath(__DIR__ . '/..'));
 require ROOTPATH . '/vendor/autoload.php';
 
+// Application Namespace
+$config['app']['ns'] = 'App';
 // Application Environment
 $config['app']['env'] = 
     isset($_SERVER['ORE_ENV']) ? $_SERVER['ORE_ENV'] : Framework::DEVELOPMENT;
-// Path of app/ folder
-$config['app']['path'] = realpath(__DIR__ . '/../app');
+// Path of App/ folder
+$config['app']['path'] = realpath(__DIR__ . '/../App');
 
 if ($config['app']['env'] === Framework::PRODUCTION) {
     ini_set('display_errors', 0);

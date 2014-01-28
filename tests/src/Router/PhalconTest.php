@@ -59,7 +59,8 @@ class PhalconTest extends \PHPUnit_Framework_TestCase {
     {
         $request = m::mock('kenjis\OreOrePHP\Request');
         $request->shouldReceive('getServer')->with('PATH_INFO')->andReturn($pathInfo);
-        $object = new Phalcon(APPPATH, $request);
+        $config = get_config();
+        $object = new Phalcon($config['app']['path'], $request);
         
         $test = $object->getRoute();
         $this->assertEquals($expected, $test);

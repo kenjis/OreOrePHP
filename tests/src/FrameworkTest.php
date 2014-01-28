@@ -43,7 +43,7 @@ class FrameworkTest extends \PHPUnit_Framework_TestCase
         $dice = test::double('Jasrags\Dice')->make();
         $twig = test::double('Twig_Environment')->make();
         $hello = test::double(
-            'Controller\Hello',
+            'App\Controller\Hello',
             ['run' => 'I am world.', 'injectCoreDependancy' => null]
         )->make();
         $container = test::double(
@@ -52,7 +52,7 @@ class FrameworkTest extends \PHPUnit_Framework_TestCase
                 return $hello;
             }]
         )->construct($dice);
-        $config = test::double('kenjis\OreOrePHP\Config')->construct(['app' => ['path' => APPPATH]]);
+        $config = get_config();
         $router = test::double(
             'kenjis\OreOrePHP\Router\Pux',
             ['getRoute' => ['Hello', 'actionSay', ['world', null, null]]]
@@ -80,7 +80,7 @@ class FrameworkTest extends \PHPUnit_Framework_TestCase
     {
         $dice = m::mock('Jasrags\Dice');
         $twig = m::mock('Twig_Environment');
-        $config = m::mock(new Config(['app' => ['path' => APPPATH]]));
+        $config = get_config();
         $router = m::mock('kenjis\OreOrePHP\Router\Pux')
             ->shouldReceive('getRoute')
             ->andReturn(['Hello', 'actionSay', ['world', null, null]])
@@ -91,12 +91,12 @@ class FrameworkTest extends \PHPUnit_Framework_TestCase
             ->getMock();
         $response->shouldReceive('send')->andReturn('I am world.');
         $logger = m::mock('Monolog\Logger');
-        $hello = m::mock('Controller\Hello');
+        $hello = m::mock('App\Controller\Hello');
         $hello->shouldReceive('run')->andReturn('I am world.');
         $hello->shouldReceive('injectCoreDependancy')
             ->with($config, $request, $response, $logger, $twig)->andReturn(null);
         $container = m::mock('kenjis\OreOrePHP\Container\Dice')
-            ->shouldReceive('resolve')->with('Controller\Hello')->andReturn($hello)
+            ->shouldReceive('resolve')->with('App\Controller\Hello')->andReturn($hello)
             ->getMock();
         
         $object = new Framework($container, $config, $router, $request, $response, $logger, $twig);
@@ -112,7 +112,7 @@ class FrameworkTest extends \PHPUnit_Framework_TestCase
     {
         $dice = m::mock('Jasrags\Dice');
         $twig = m::mock('Twig_Environment');
-        $config = m::mock(new Config(['app' => ['path' => APPPATH]]));
+        $config = get_config();
         $router = m::mock('kenjis\OreOrePHP\Router\Pux')
             ->shouldReceive('getRoute')
             ->andReturn(['Notfound', 'actionNotfound', [null, null, null]])
@@ -123,15 +123,15 @@ class FrameworkTest extends \PHPUnit_Framework_TestCase
         $response->shouldReceive('setBody')->with('404 Not Found')->andReturn(null);
         $response->shouldReceive('send')->andReturn(null);
         $logger = m::mock('Monolog\Logger');
-        $logger->shouldReceive('error')->with('Controller\Notfound is not found.')->andReturn(null);
+        $logger->shouldReceive('error')->with('App\Controller\Notfound is not found.')->andReturn(null);
         
-        $error = m::mock('Controller\Error');
+        $error = m::mock('App\Controller\Error');
         $error->shouldAllowMockingProtectedMethods();
         $error->shouldReceive('injectCoreDependancy')
             ->with($config, $request, $response, $logger, $twig)->andReturn(null);
         $error->shouldReceive('show404')->with('actionNotfound', 'kenjis\OreOrePHP\HttpNotFoundException')->andReturn('404 Not Found');
         $container = m::mock('kenjis\OreOrePHP\Container\Dice')
-            ->shouldReceive('resolve')->with('Controller\Error')->andReturn($error)
+            ->shouldReceive('resolve')->with('App\Controller\Error')->andReturn($error)
             ->getMock();
         
         $object = new Framework($container, $config, $router, $request, $response, $logger, $twig);

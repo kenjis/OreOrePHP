@@ -1,6 +1,6 @@
 <?php
 
-namespace Controller;
+namespace App\Controller;
 
 use Mockery as m;
 
@@ -41,7 +41,7 @@ class BaseControllerTest extends \PHPUnit_Framework_TestCase {
     }
     
     /**
-     * @covers Controller\BaseController::findActionMethod
+     * @covers App\Controller\BaseController::findActionMethod
      * @dataProvider findActionMethodProvider
      */
     public function testfindActionMethod_actionIndex($requestMethod, $methodExists, $expected)
@@ -51,7 +51,7 @@ class BaseControllerTest extends \PHPUnit_Framework_TestCase {
             ->with('REQUEST_METHOD')
             ->andReturn($requestMethod)
             ->getMock();
-        $obj = m::mock('Controller\\BaseController[methodExists]')
+        $obj = m::mock('App\\Controller\\BaseController[methodExists]')
            ->shouldAllowMockingProtectedMethods()
            ->shouldReceive('methodExists')
            ->andReturn($methodExists)
@@ -63,11 +63,11 @@ class BaseControllerTest extends \PHPUnit_Framework_TestCase {
             // test protected method
             $test = $obj->findActionMethod('index');
             $this->assertEquals($test, $expected);
-        }, $this, 'Controller\\BaseController')->__invoke();
+        }, $this, 'App\\Controller\\BaseController')->__invoke();
     }
 
     /**
-     * @covers Controller\BaseController::injectCoreDependancy
+     * @covers App\Controller\BaseController::injectCoreDependancy
      * @todo   Implement testInjectCoreDependancy().
      */
     public function testInjectCoreDependancy() {
@@ -101,7 +101,7 @@ class BaseControllerTest extends \PHPUnit_Framework_TestCase {
         $logger = m::mock('Monolog\Logger');
         
         if ($requestMethod === 'GET') {
-            $object = m::mock('Controller\\BaseController[methodExists]')
+            $object = m::mock('App\\Controller\\BaseController[methodExists]')
                 ->shouldAllowMockingProtectedMethods()
                 ->shouldReceive('methodExists')
                 ->with('getIndex')
@@ -113,7 +113,7 @@ class BaseControllerTest extends \PHPUnit_Framework_TestCase {
                 ->andReturn('getIndex')
                 ->getMock();
         } else {
-            $object = m::mock('Controller\\BaseController[methodExists]')
+            $object = m::mock('App\\Controller\\BaseController[methodExists]')
                 ->shouldAllowMockingProtectedMethods()
                 ->shouldReceive('methodExists')
                 ->with('postIndex')
@@ -136,12 +136,12 @@ class BaseControllerTest extends \PHPUnit_Framework_TestCase {
      * @expectedException kenjis\OreOrePHP\HttpNotFoundException
      */
     public function testRun_Method_Not_Found() {
+        $config = get_config();
         $request = m::mock('kenjis\OreOrePHP\Request')
             ->shouldReceive('getServer')
             ->with('REQUEST_METHOD')
             ->andReturn('GET')
             ->getMock();
-        $config = m::mock('kenjis\OreOrePHP\Config');
         $response = m::mock('kenjis\OreOrePHP\Response')
             ->shouldReceive('setStatusCode')
             ->with(404)
@@ -149,11 +149,11 @@ class BaseControllerTest extends \PHPUnit_Framework_TestCase {
             ->getMock();
         $logger = m::mock('Monolog\Logger')
             ->shouldReceive('error')
-            ->with('Mockery_1_Controller_BaseController::actionNotexists is not found.')
+            ->with('Mockery_1_App_Controller_BaseController::actionNotexists is not found.')
             ->andReturn(null)
             ->getMock();
         
-        $object = m::mock('Controller\\BaseController[methodExists]')
+        $object = m::mock('App\\Controller\\BaseController[methodExists]')
             ->shouldAllowMockingProtectedMethods()
             ->shouldReceive('methodExists')
             ->with('getIndex')
@@ -174,7 +174,7 @@ class BaseControllerTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers Controller\BaseController::actionIndex
+     * @covers App\Controller\BaseController::actionIndex
      * @todo   Implement testActionIndex().
      */
     public function testActionIndex() {

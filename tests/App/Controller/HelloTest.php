@@ -1,6 +1,6 @@
 <?php
 
-namespace Controller;
+namespace App\Controller;
 
 use Mockery as m;
 
@@ -39,7 +39,7 @@ class HelloTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers Controller\Hello::actionSay
+     * @covers App\Controller\Hello::actionSay
      */
     public function testActionSay() {
         $param = 'OreOrePHP';

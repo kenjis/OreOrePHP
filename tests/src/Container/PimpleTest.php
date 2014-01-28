@@ -21,8 +21,9 @@ class PimpleTest extends \PHPUnit_Framework_TestCase {
             $c = new \Pimple();
             // Templating (Twig)
             $c['templating'] = $c->share(function ($c) {
-                $loader = new \Twig_Loader_Filesystem(ROOTPATH . '/app/views');
-                return new \Twig_Environment($loader, ['cache' => ROOTPATH . '/cache']);
+                $config = get_config();
+                $loader = new \Twig_Loader_Filesystem($config['app']['path'] . '/views');
+                return new \Twig_Environment($loader, ['cache' => $config['app']['path'] . '/var/cache']);
             });
             
             $container = new Pimple($c);
@@ -43,8 +44,8 @@ class PimpleTest extends \PHPUnit_Framework_TestCase {
     }
     
     public function testResolve_Controller_Hello() {
-        $test = $this->object->resolve('Controller\\Hello');
-        $this->assertInstanceOf('Controller\\Hello', $test);
+        $test = $this->object->resolve('App\\Controller\\Hello');
+        $this->assertInstanceOf('App\\Controller\\Hello', $test);
     }
 
 }

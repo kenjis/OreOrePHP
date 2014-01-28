@@ -69,7 +69,7 @@ class Framework
         
         try {
             $controllerFilePath = $this->config['app']['path'] . '/Controller/' . $controllerName . '.php';
-            $FullControllerName = 'Controller\\' . $controllerName;
+            $FullControllerName = $this->config['app']['ns'] . '\\Controller\\' . $controllerName;
             if (! file_exists($controllerFilePath)) {
                 $error = $FullControllerName . ' is not found.';
                 $this->logger->error($error);
@@ -84,7 +84,7 @@ class Framework
             
             $body = $controller->run($action, $params);
         } catch (HttpNotFoundException $e) {
-            $controller = $this->container->resolve('Controller\\Error');
+            $controller = $this->container->resolve($this->config['app']['ns'] . '\\Controller\\Error');
             $controller->injectCoreDependancy(
                 $this->config, $this->request, $this->response, 
                 $this->logger, $this->templating
@@ -93,7 +93,7 @@ class Framework
             $body = $controller->show404($action, $e);
         } catch (\Exception $e) {
             //var_dump($e); exit;
-            $controller = $this->container->resolve('Controller\\Error');
+            $controller = $this->container->resolve($this->config['app']['ns']. '\\Controller\\Error');
             $controller->injectCoreDependancy(
                 $this->config, $this->request, $this->response, 
                 $this->logger, $this->templating

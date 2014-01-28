@@ -3,20 +3,20 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "1bf04c770136e7d25a814804816202d7",
+    "hash": "3ffd06ee40aeabc1cb113ffe1816956b",
     "packages": [
         {
             "name": "corneltek/pux",
-            "version": "1.3.3",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/c9s/Pux.git",
-                "reference": "87fdc4239475b678642b9ed022dfed6a6bb09bef"
+                "reference": "09e6507db1c69f282a73a9d8a171bcff590f643c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/c9s/Pux/zipball/87fdc4239475b678642b9ed022dfed6a6bb09bef",
-                "reference": "87fdc4239475b678642b9ed022dfed6a6bb09bef",
+                "url": "https://api.github.com/repos/c9s/Pux/zipball/09e6507db1c69f282a73a9d8a171bcff590f643c",
+                "reference": "09e6507db1c69f282a73a9d8a171bcff590f643c",
                 "shasum": ""
             },
             "require-dev": {
@@ -39,7 +39,7 @@
                 }
             ],
             "description": "Fast PHP router",
-            "time": "2014-01-16 10:59:24"
+            "time": "2014-01-23 17:34:00"
         },
         {
             "name": "jasrags/dice",
@@ -607,12 +607,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/padraic/mockery.git",
-                "reference": "0163f082dee93c895497571afd458a04c48b0b7a"
+                "reference": "cce505fe699d12bea3735eee2638d9955a908052"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/0163f082dee93c895497571afd458a04c48b0b7a",
-                "reference": "0163f082dee93c895497571afd458a04c48b0b7a",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/cce505fe699d12bea3735eee2638d9955a908052",
+                "reference": "cce505fe699d12bea3735eee2638d9955a908052",
                 "shasum": ""
             },
             "require": {
@@ -664,7 +664,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2014-01-19 20:55:32"
+            "time": "2014-01-27 10:39:37"
         }
     ],
     "aliases": [
