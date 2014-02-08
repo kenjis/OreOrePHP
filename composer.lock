@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "3ffd06ee40aeabc1cb113ffe1816956b",
+    "hash": "2eae3ed74b54d246c40b85511c1814ae",
     "packages": [
         {
             "name": "corneltek/pux",
@@ -150,16 +150,16 @@
         },
         {
             "name": "pimple/pimple",
-            "version": "dev-master",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Pimple.git",
-                "reference": "dc03a407f20cbd4eaf55472875ad47ee96d921ea"
+                "reference": "2019c145fe393923f3441b23f29bbdfaa5c58c4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Pimple/zipball/dc03a407f20cbd4eaf55472875ad47ee96d921ea",
-                "reference": "dc03a407f20cbd4eaf55472875ad47ee96d921ea",
+                "url": "https://api.github.com/repos/fabpot/Pimple/zipball/2019c145fe393923f3441b23f29bbdfaa5c58c4d",
+                "reference": "2019c145fe393923f3441b23f29bbdfaa5c58c4d",
                 "shasum": ""
             },
             "require": {
@@ -168,7 +168,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -192,7 +192,7 @@
                 "container",
                 "dependency injection"
             ],
-            "time": "2013-11-30 15:29:54"
+            "time": "2013-11-22 08:30:29"
         },
         {
             "name": "psr/log",
@@ -406,7 +406,7 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan H. Wage",
+                    "name": "Jonathan Wage",
                     "email": "jonwage@gmail.com",
                     "homepage": "http://www.jwage.com/",
                     "role": "Creator"
@@ -607,12 +607,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/padraic/mockery.git",
-                "reference": "cce505fe699d12bea3735eee2638d9955a908052"
+                "reference": "5d0e17cacfeb8c7048fafb1f8718520d0dff1da9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/cce505fe699d12bea3735eee2638d9955a908052",
-                "reference": "cce505fe699d12bea3735eee2638d9955a908052",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/5d0e17cacfeb8c7048fafb1f8718520d0dff1da9",
+                "reference": "5d0e17cacfeb8c7048fafb1f8718520d0dff1da9",
                 "shasum": ""
             },
             "require": {
@@ -664,7 +664,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2014-01-27 10:39:37"
+            "time": "2014-02-07 22:32:37"
         }
     ],
     "aliases": [
@@ -672,7 +672,6 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "pimple/pimple": 20,
         "jasrags/dice": 20,
         "mockery/mockery": 20
     },
