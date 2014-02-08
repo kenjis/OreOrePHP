@@ -76,7 +76,7 @@ class Framework
                 throw new HttpNotFoundException($error);
             }
             
-            $controller = $this->container->resolve($FullControllerName);
+            $controller = $this->container->get($FullControllerName);
             $controller->injectCoreDependancy(
                 $this->config, $this->request, $this->response, 
                 $this->logger, $this->templating
@@ -84,7 +84,7 @@ class Framework
             
             $body = $controller->run($action, $params);
         } catch (HttpNotFoundException $e) {
-            $controller = $this->container->resolve($this->config['app']['ns'] . '\\Controller\\Error');
+            $controller = $this->container->get($this->config['app']['ns'] . '\\Controller\\Error');
             $controller->injectCoreDependancy(
                 $this->config, $this->request, $this->response, 
                 $this->logger, $this->templating
@@ -93,7 +93,7 @@ class Framework
             $body = $controller->show404($action, $e);
         } catch (\Exception $e) {
             //var_dump($e); exit;
-            $controller = $this->container->resolve($this->config['app']['ns']. '\\Controller\\Error');
+            $controller = $this->container->get($this->config['app']['ns']. '\\Controller\\Error');
             $controller->injectCoreDependancy(
                 $this->config, $this->request, $this->response, 
                 $this->logger, $this->templating

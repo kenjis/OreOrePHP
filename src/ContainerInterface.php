@@ -20,5 +20,5 @@ interface ContainerInterface
      * @param string $class
      * @return object
      */
-    public function resolve($class);
+    public function get($class);
 }

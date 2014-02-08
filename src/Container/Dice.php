@@ -23,7 +23,7 @@ class Dice implements ContainerInterface
         $this->container = $container;
     }
     
-    public function resolve($class)
+    public function get($class)
     {
         return $this->container->create($class);
     }

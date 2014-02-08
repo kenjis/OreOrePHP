@@ -48,7 +48,7 @@ class FrameworkTest extends \PHPUnit_Framework_TestCase
         )->make();
         $container = test::double(
             'kenjis\OreOrePHP\Container\Dice',
-            ['resolve' => function () use ($hello) {
+            ['get' => function () use ($hello) {
                 return $hello;
             }]
         )->construct($dice);
@@ -96,7 +96,7 @@ class FrameworkTest extends \PHPUnit_Framework_TestCase
         $hello->shouldReceive('injectCoreDependancy')
             ->with($config, $request, $response, $logger, $twig)->andReturn(null);
         $container = m::mock('kenjis\OreOrePHP\Container\Dice')
-            ->shouldReceive('resolve')->with('App\Controller\Hello')->andReturn($hello)
+            ->shouldReceive('get')->with('App\Controller\Hello')->andReturn($hello)
             ->getMock();
         
         $object = new Framework($container, $config, $router, $request, $response, $logger, $twig);
@@ -131,7 +131,7 @@ class FrameworkTest extends \PHPUnit_Framework_TestCase
             ->with($config, $request, $response, $logger, $twig)->andReturn(null);
         $error->shouldReceive('show404')->with('actionNotfound', 'kenjis\OreOrePHP\HttpNotFoundException')->andReturn('404 Not Found');
         $container = m::mock('kenjis\OreOrePHP\Container\Dice')
-            ->shouldReceive('resolve')->with('App\Controller\Error')->andReturn($error)
+            ->shouldReceive('get')->with('App\Controller\Error')->andReturn($error)
             ->getMock();
         
         $object = new Framework($container, $config, $router, $request, $response, $logger, $twig);

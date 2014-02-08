@@ -23,7 +23,7 @@ class Pimple implements ContainerInterface
         $this->container = $container;
     }
     
-    public function resolve($class)
+    public function get($class)
     {
         // Automatic injection
         $c = $this->container;

@@ -38,13 +38,13 @@ class PimpleTest extends \PHPUnit_Framework_TestCase {
         
     }
 
-    public function testResolve_Twig() {
-        $test = $this->object->resolve('templating');
+    public function testGet_Twig() {
+        $test = $this->object->get('templating');
         $this->assertInstanceOf('Twig_Environment', $test);
     }
     
-    public function testResolve_Controller_Hello() {
-        $test = $this->object->resolve('App\\Controller\\Hello');
+    public function testGet_Controller_Hello() {
+        $test = $this->object->get('App\\Controller\\Hello');
         $this->assertInstanceOf('App\\Controller\\Hello', $test);
     }
 

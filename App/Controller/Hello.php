@@ -15,6 +15,6 @@ class Hello extends BaseController
         $now = date('Y-m-d H:i:s');
         return $this->templating->render('hello.html', ['now' => $now, 'name' => $name]);
 
-        //return 'Hello ' . $name;
+        //return 'Hello ' . htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
     }
 }

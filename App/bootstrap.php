@@ -23,13 +23,13 @@ $container = new \kenjis\OreOrePHP\Container\Dice($getContainer());
 //$getContainer = require $config['app']['path'] . '/config/container.pimple.php';
 //$container = new \kenjis\OreOrePHP\Container\Pimple($getContainer());
 
-$config   = $container->resolve('kenjis\OreOrePHP\Config');
-$request  = $container->resolve('kenjis\OreOrePHP\Request');
-$router   = $container->resolve('router');
-$response = $container->resolve('kenjis\OreOrePHP\Response');
+$config   = $container->get('kenjis\OreOrePHP\Config');
+$request  = $container->get('kenjis\OreOrePHP\Request');
+$router   = $container->get('router');
+$response = $container->get('kenjis\OreOrePHP\Response');
 
 // Logger
-$logger = $container->resolve('logger');
+$logger = $container->get('logger');
 
 // Template Engine
-$templating = $container->resolve('templating');
+$templating = $container->get('templating');
