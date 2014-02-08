@@ -10,6 +10,9 @@
  * @link       https://github.com/kenjis/OreOrePHP
  */
 
+// start profiling
+//xhprof_enable();
+
 use kenjis\OreOrePHP\Framework;
 
 error_reporting(-1);
@@ -37,3 +40,11 @@ $app = new Framework(
     $container, $config, $router, $request, $response, $logger, $templating
 );
 $app->run();
+
+// stop profiler
+//$xhprof_data = xhprof_disable();
+//$XHPROF_ROOT = '/opt/lampp/htdocs';
+//include_once $XHPROF_ROOT . "/xhprof_lib/utils/xhprof_lib.php";
+//include_once $XHPROF_ROOT . "/xhprof_lib/utils/xhprof_runs.php";
+//$xhprof_runs = new XHProfRuns_Default();
+//$run_id = $xhprof_runs->save_run($xhprof_data, "xhprof_OreOrePHP");
